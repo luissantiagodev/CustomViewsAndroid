@@ -9,7 +9,7 @@
 
     <luis.com.mylibrary.MyView
         android:layout_width="match_parent"
-        android:text = "Hola Aline"
+        android:text = "Hola Aline x"
         android:layout_height="wrap_content"/>
     
 
