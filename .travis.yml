@@ -1,7 +1,7 @@
 language : android
 sudo : false
 jdk : oraclejdk8
-install : antd deps
+install : ant deps
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
