@@ -19,6 +19,7 @@ env:
  - ADB_INSTALL_TIMEOUT=5 # minutes
  - ANDROID_ABI=armeabi-v7a
  - QEMU_AUDIO_DRV=none # Remove audio
+ - android-26
 
 
 android:
