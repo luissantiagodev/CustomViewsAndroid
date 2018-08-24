@@ -13,11 +13,12 @@ cache :
 
 env:
  global:
- - ANDROID_API=28
- - EMULATOR_API=26
+ - ANDROID_API_LEVEL=26
+ - ANDROID_EMU_API_LEVEL=22
  - ANDROID_BUILD_TOOLS=28.0.0
  - ADB_INSTALL_TIMEOUT=5 # minutes
- - ANDROID_ABI=google_apis/armeabi-v7a
+ - ANDROID_ABI=armeabi-v7a
+ - QEMU_AUDIO_DRV=none # Remove audio
 
 
 android:
@@ -56,8 +57,10 @@ before_script:
 
 
 script:
- - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
-
+  - ./gradlew clean installDebug
+  - ./gradlew check
+  - ./gradlew testDebugUnitTest
+  - ./gradlew connectedDebugAndroidTest
 
 
 secure: "hUL6AmhBJyN1iMKuqccEwPUb1Su1zblnNy+szAcrNU+ehJ6EQ0upVcxt6vPpwMsmAlQeRsD/ZU3a7AKlpgvP77HlBqJfJfKLp//SD9fo1AzAgmy3a5P92m43/tg3IO/dgHiNp0JdbFRAc6Sgujh/M9ZMUCvhs7k5Piy3vp6EKnegrTxQwlTVj7GPo9MiTqhZ4k3i7tVokp6ja1oJ7BRjWWEDteX9KYti+IRsFHcAdCxzRuPSNdObb+sllhTK6pW1OIoulxF8zg7Xg2lZc8CiwEOEL/vYOYqR46+1rVW1FSSdvWTQIDlWkPseY+3wmzRYPJvmXrXuFlF2fI/dgv3zRMDxAjg7zcJQgcb5aIEujohloEG3LyCIn/ioo9oapXaPXJ3GIn5JIDrT9RfKv1fAYF3hiC92iE25ipIXg1woQkXvM7q5jMMYKLWnU8aRXq7JxkzSaYPGBiK5wB8cSUJWAJWnIjMMDKluBxkAiS0kzCvgZPEcJkL1tISkStNvDl0Dilf25uXchXe+rAYn4PHpFAoMU0JM+qJiLJqApGvRniQioaQQ4V5PhUDK/NL6ROP2NdWGvHxNN6hnQI/QcJ+x5g0T26WIl5wEKAfDSTBIY3zy+YDn9fw+Zr+4S3cenZZMFeq0Rox4YH8glgROsVqpisHJWFF6/W1FqD5/br7Ng+M="
